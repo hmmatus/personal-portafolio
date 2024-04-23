@@ -1,0 +1,12 @@
+---
+import WorkCard from "../../cards/WorkCard.astro";
+
+const allWorks = await Astro.glob('../../../pages/works/*.md');
+---
+
+<section id="works" class="mt-10">
+  <h2 class="font-bold">Featured work</h2>
+  <div class="mt-2">
+    {allWorks.slice(0, 3).map((work) => <WorkCard work={work} />)}
+  </div>
+</section>
