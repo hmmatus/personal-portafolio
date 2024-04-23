@@ -7,6 +7,19 @@
       Velit officia consequat duis enim velit mollit. Exercitation veniam
       consequat sunt nostrud amet.
     </p>
-    <button class="bg-primary text-white px-5 py-2 mt-2 font-semibold">Download Curriculum</button>
+    <button id="download-button" class="bg-primary text-white px-5 py-2 mt-2 font-semibold">Download Curriculum</button>
   </div>
 </section>
+
+<script>
+function downloadData() {
+  const link = document.createElement('a');
+  link.href = '/cv.pdf';
+  link.download = 'cv.pdf';
+  link.dispatchEvent(new MouseEvent('click'));
+}
+const downloadButton = document.getElementById('download-button');
+if (downloadButton) {
+  downloadButton.addEventListener('click', downloadData);
+}
+</script>
