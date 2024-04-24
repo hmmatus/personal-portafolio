@@ -1,0 +1,18 @@
+---
+import {Astronav, MenuItems, MenuIcon} from "astro-navbar"
+import { menuOptions } from "../../utils/menuOptions"
+---
+
+
+<header class="lg:flex flex-row-reverse justify-between p-5 gap-5 mx-auto container">
+  <Astronav closeOnClick>
+    <div class="flex justify-end lg:hidden">
+      <MenuIcon class="w-10 h-10 text-gray-800" />
+   </div>
+    <MenuItems class="hidden lg:flex">
+      <ul class="flex flex-col lg:flex-row items-center justify-center lg:gap-2">
+        {menuOptions.map((option) => (<li><a class="text-lg text-text font-bold" href={option.path}>{option.label}</a></li>))}
+      </ul>
+    </MenuItems>
+  </Astronav>
+</header>
