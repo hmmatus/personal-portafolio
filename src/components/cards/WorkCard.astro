@@ -3,7 +3,7 @@ const {frontmatter} = Astro.props.work
 ---
 
 <article class="flex flex-col items-center  lg:flex-row mb-10">
-  <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="flex w-50 h-40 lg:w-60 lg:h-50 rounded-md" />
+  <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="flex w-full h-80 lg:w-80 lg:h-60 rounded-md" />
   <div class="flex flex-col gap-2 w-[100%] lg:ml-2 lg:w-[60%] mt-4 lg:mt-0">
     <h2 class="font-bold">{frontmatter.title}</h2>
     <div class="flex gap-2">
