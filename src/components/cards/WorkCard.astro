@@ -1,9 +1,13 @@
 ---
+import {Image} from "astro:assets"
+
 const {frontmatter} = Astro.props.work
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/works/*.{jpeg,jpg,png,svg}')
+if (!images[`/src/assets/works/${frontmatter.image.url}`]) throw new Error(`"${frontmatter.image.url}" does not exist in glob: "/src/assets/works/*.{jpeg,jpg,png,svg}"`);
 ---
 
 <article class="flex flex-col items-center  lg:flex-row mb-10">
-  <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="flex w-full h-80 lg:w-80 lg:h-60 rounded-md" />
+  <Image src={images[`/src/assets/works/${frontmatter.image.url}`]()} alt={frontmatter.image.alt} class="flex w-full h-80 lg:w-80 lg:h-60 rounded-md aspect-[4/3]" />
   <div class="flex flex-col gap-2 w-[100%] lg:ml-2 lg:w-[60%] mt-4 lg:mt-0">
     <h2 class="font-bold">{frontmatter.title}</h2>
     <div class="flex gap-2">
@@ -11,6 +15,6 @@ const {frontmatter} = Astro.props.work
       {frontmatter.tags.slice(0, 3).map((tag: string) => <span class="text-text-light">{tag}</span>)}
     </div>
     <p>{frontmatter.description}</p>
-    <a class="flex self-end text-indigo-600 font-bold" href={frontmatter.url}>Read more</a>
+    <a class="flex self-end text-indigo-600 font-bold" href={frontmatter.url}>Go to Github</a>
   </div>
 </article>

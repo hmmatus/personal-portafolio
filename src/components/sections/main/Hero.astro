@@ -1,7 +1,12 @@
+---
+import {Image} from "astro:assets"
+import profile from "@/assets/profile.jpg"
+---
 <section class="flex flex-col lg:flex-row-reverse items-center justify-center">
-  <img
-    src="/profile.jpg"
-    class="rounded-full w-44 h-44 lg:w-60 lg:h-60 lg:ml-12"
+  <Image
+    alt="Profile Img"
+    src={profile}
+    class="rounded-full w-44 h-44 lg:w-60 lg:h-60 lg:ml-12 aspect-auto"
   />
   <div
     class="flex flex-col items-center justify-center lg:items-start pt-2 lg:max-w-3xl"

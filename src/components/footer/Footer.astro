@@ -1,8 +1,14 @@
+---
+import {Image} from "astro:assets"
+import github from "@/assets/icons/github.svg"
+import insta from "@/assets/icons/insta.svg"
+import linkedin from "@/assets/icons/linkedin.svg"
+---
 <footer class="flex flex-col items-center justify-center w-full">
   <div class="flex gap-2 mb-2">
-    <a class="w-10 h-10 flex items-center justify-center" href="https://github.com/hmmatus"><img src="./icons/github.svg" /></a>
-    <a class="w-10 h-10 flex items-center justify-center" href="https://www.instagram.com/hm_matus/"><img src="./icons/insta.svg" /></a>
-    <a class="w-10 h-10 flex items-center justify-center" href="https://www.linkedin.com/in/hmmatus/"><img src="./icons/linkedin.svg" /></a>
+    <a class="w-10 h-10 flex items-center justify-center" href="https://github.com/hmmatus"><Image alt="Github logo" src={github} /></a>
+    <a class="w-10 h-10 flex items-center justify-center" href="https://www.instagram.com/hm_matus/"><Image alt="Instagram logo" src={insta} /></a>
+    <a class="w-10 h-10 flex items-center justify-center" href="https://www.linkedin.com/in/hmmatus/"><Image alt="Linkedin logo" src={linkedin} /></a>
   </div>
   <p>Copyright ©2024 All rights reserved </p>
 </footer>
