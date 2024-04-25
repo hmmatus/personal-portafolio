@@ -1,0 +1,69 @@
+---
+import sendGrid from "@sendgrid/mail";
+sendGrid.setApiKey(import.meta.env.SENDGRID_API_KEY);
+if (Astro.request.method === "POST") {
+  try {
+    // Getting posted data from our contact form
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const message = data.get("message");
+
+    // TODO: Do not forget to do validation and error handling over received data from your contact form.
+
+    // Sending email
+    const msg = {
+      to: "hmatus.dev@gmail.com", // Change to your recipient
+      from: "hmatus.dev@gmail.com", // Change to your verified sender
+      subject: `Contact form submission from ${name}`,
+      replyTo: {email:email+"", name:name+""},
+      text: message + "",
+    };
+
+    await sendGrid
+      .send(msg)
+      .then(() => {
+        console.log("Email sent successfully")
+      })
+      .catch((error) => {
+        throw new Error((error as Error).message);
+      });
+  } catch (error) {
+  console.log("🚀 ~ error:", error)
+  }
+}
+---
+
+<form
+  id="contact-form"
+  method="post"
+  class="flex flex-col gap-4 w-[100%] mr-4 lg:max-w-[60%]"
+>
+  <div class="input-container">
+    <label>Name</label>
+    <input type="text" name="name" placeholder="Name" />
+  </div>
+  <div class="input-container">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Email" />
+  </div>
+  <div class="input-container">
+    <label>Message</label>
+    <textarea name="message" placeholder="Message"></textarea>
+  </div>
+  <div>
+    <button
+      class="bg-primary text-white p-2 rounded-md text-xl font-semibold"
+      type="submit">Submit</button
+    >
+  </div>
+</form>
+
+<style>
+  .input-container {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<script></script>
